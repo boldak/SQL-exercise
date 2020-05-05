@@ -1,0 +1,5 @@
+Select the name of all the pieces. #select Name from Pieces;
+Select all the providers data.#select * from providers;
+Obtain the average price of each piece (show only the piece code and the average price).#select piece, avg(price) from Provides group by piece;
+Obtain the names of all providers who supply piece 1.#select Name from Providers where Code in ( select  Provider from provides where Piece = 1 ); 
+Select the name of pieces provided by provider with code "HAL".#select Name from Pieces where Code in ( select Piece from Provides where Provider = 'HAL');

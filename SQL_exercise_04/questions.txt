@@ -1,0 +1,7 @@
+Select the title of all movies.#select title from movies;
+Show all the distinct ratings in the database.#select distinct rating from movies;
+Show all unrated movies.#select * from movies where rating is NULL;
+Select all movie theaters that are not currently showing a movie.#select * from MovieTheaters where Movie is NULL;
+Select all data from all movie theaters and, additionally, the data from the movie that is being shown in the theater (if one is being shown).#SELECT * FROM MovieTheaters LEFT JOIN Movies ON MovieTheaters.Movie = Movies.Code;
+Select all data from all movies and, if that movie is being shown in a theater, show the data from the theater.#SELECT * FROM Movies LEFT JOIN MovieTheaters ON Movies.Code = MovieTheaters.Movie;
+Show the titles of movies not currently being shown in any theaters.#SELECT Movies.Title FROM MovieTheaters RIGHT JOIN Movies ON MovieTheaters.Movie = Movies.Code WHERE MovieTheaters.Movie IS NULL;

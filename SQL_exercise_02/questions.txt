@@ -1,0 +1,16 @@
+Select the last name of all employees. #select LastName from Employees;
+Select the last name of all employees, without duplicates. #select distinct LastName from employees;
+Select all the data of employees whose last name is "Smith". #select * from employees where lastname = 'Smith';
+Select all the data of employees whose last name is "Smith" or "Doe". #select * from Employees where lastname in ('Smith', 'Doe');
+Select all the data of employees that work in department 14. #select * from Employees where department = 14;
+Select all the data of employees that work in department 37 or department 77. #select * from employees where department = 37 or department = 77;
+Select all the data of employees whose last name begins with an "S". #select * from employees where LastName like 'S%';
+Select the sum of all the departments' budgets. #select sum(budget) from Departments;
+Select the number of employees in each department (you only need to show the department code and the number of employees). #select Department, count(*) from employees group by department;
+Select all the data of employees, including each employee's department's data. #select a.*, b.* from employees a join departments b on a.department = b.code;
+Select the name and last name of each employee, along with the name and budget of the employee's department. #select a.name, a.lastname, b.name Department_name, b.Budget from employees a join departments b on a.department = b.code;
+Select the name and last name of employees working for departments with a budget greater than $60,000. #select name, lastname from employees where department in ( select code from departments where Budget>60000 );
+Select the departments with a budget larger than the average budget of all the departments. #select * from departments where budget > ( select avg(budget) from departments);
+Select the names of departments with more than two employees. #select b.name 
+from departments b where code in ( select department from employees group by department having count(*)>2);
+Select the name and last name of employees working for departments with second lowest budget. #select name, lastname from employees where department =( select temp.code from (select * from departments order by budget limit 2) temp order by temp.budget desc limit 1 );

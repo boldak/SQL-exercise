@@ -11,6 +11,5 @@ Select all the data of employees, including each employee's department's data. #
 Select the name and last name of each employee, along with the name and budget of the employee's department. #select a.name, a.lastname, b.name Department_name, b.Budget from employees a join departments b on a.department = b.code;
 Select the name and last name of employees working for departments with a budget greater than $60,000. #select name, lastname from employees where department in ( select code from departments where Budget>60000 );
 Select the departments with a budget larger than the average budget of all the departments. #select * from departments where budget > ( select avg(budget) from departments);
-Select the names of departments with more than two employees. #select b.name 
-from departments b where code in ( select department from employees group by department having count(*)>2);
+Select the names of departments with more than two employees. #select b.name from departments b where code in ( select department from employees group by department having count(*)>2);
 Select the name and last name of employees working for departments with second lowest budget. #select name, lastname from employees where department =( select temp.code from (select * from departments order by budget limit 2) temp order by temp.budget desc limit 1 );
